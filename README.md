@@ -21,7 +21,7 @@ To tag a release on the latest commit on a maintenance branch:
     developer:~$ repo sync
     developer:~$ repo forall -c git tag v1.1
     developer:~$ repo forall -c 'git push -u $REPO_REMOTE v1.1'
-    developer:~$ sed -i 's#refs/heads/ma162_maint#refs/tags/v1.1#' .repo/manifests/default.xml
+    developer:~$ sed -i 's#refs/heads/v1_maint#refs/tags/v1.1#' .repo/manifests/default.xml
     developer:~$ git -C .repo/manifests commit -m "New release v1.1" default.xml
     developer:~$ git -C .repo/manifests tag v1.1
     developer:~$ git -C .repo/manifests push -u origin v1.1
