@@ -10,16 +10,14 @@ RUN apt-get update \
         git repo \
         bash-completion man-db vim \
  && apt-get autoclean \
- && mkdir -m 777 "${REMOTES}"
+ && mkdir -m 777 "${REMOTES}" \
+ && adduser --disabled-password --gecos "" "${USERNAME}"
 
-RUN adduser --disabled-password --gecos "" "${USERNAME}"
 USER "${USERNAME}"
 
 RUN git config --global user.name "Developer" \
- && git config --global user.email "developer@example.com"
-
-WORKDIR "${REMOTES}"
-RUN git init -q "${MANIFEST_REPO}" \
+ && git config --global user.email "developer@example.com" \
+ && git init -q "${MANIFEST_REPO}" \
  && echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?><manifest>" >> "${DEFAULT_XML}" \
  && for r in $(seq -f "remote-%02g" 1 2); do \
       echo "  <remote  name=\"${r}\" fetch=\"${REMOTES}/${r}\" />" >> "${DEFAULT_XML}"; \
