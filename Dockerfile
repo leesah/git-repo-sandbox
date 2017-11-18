@@ -24,6 +24,10 @@ RUN git config --global user.name Developer \
       for n in $(seq --format='project-%02g' 1 8); do \
         p=${REMOTES}/${r}/${n}.git; \
         git init --quiet --bare ${p}; \
+        git clone --quiet ${p} /tmp/p; \
+        git -C /tmp/p commit --quiet --allow-empty --allow-empty-message --message=''; \
+        git -C /tmp/p push --quiet origin master; \
+        rm --force --recursive /tmp/p; \
         echo "  <project remote='${r}' name='${n}' path='${r}.${n}' revision='refs/heads/master' />" >> /tmp/m/default.xml; \
       done \
     done \
