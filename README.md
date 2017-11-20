@@ -59,6 +59,8 @@ developer:~$ git -C .repo/manifests push -u origin v1.1
 
 ### Release checkout
 
+Checkout the code base by a release tag:
+
 ```bash
 developer:~$ repo init --manifest-url=/remotes/remote-00/manifest.git/ -b refs/tags/v1.1
 developer:~$ repo sync
