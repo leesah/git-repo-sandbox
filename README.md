@@ -37,7 +37,7 @@ developer:~$ git -C .repo/manifests commit --message="New maintenance branch: v1
 developer:~$ git -C .repo/manifests push --set-upstream origin v1_maint
 ```
 
-### Release tagging
+### Release tag
 
 Tag a release on the latest commit on a maintenance branch:
 
@@ -52,12 +52,12 @@ Create corresponding tag in the manifest:
 
 ```bash
 developer:~$ sed --in-place 's#refs/heads/v1_maint#refs/tags/v1.1#' .repo/manifests/default.xml
-developer:~$ git -C .repo/manifests commit -m "New release v1.1" default.xml
+developer:~$ git -C .repo/manifests commit -m "New release: v1.1" default.xml
 developer:~$ git -C .repo/manifests tag v1.1
 developer:~$ git -C .repo/manifests push -u origin v1.1
 ```
 
-Checkout a certain release:
+### Release checkout
 
 ```bash
 developer:~$ repo init --manifest-url=/remotes/remote-00/manifest.git/ -b refs/tags/v1.1
